@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SeenIt</title>
+    <link rel="stylesheet" href="style/site.css">
+    <link rel="stylesheet" href="style/post.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/menu.css">
+    <link rel="stylesheet" href="style/notifications.css">
+    <link rel="stylesheet" href="style/submit.css">
+    <link rel="stylesheet" href="style/comments.css">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+
+    <script src="js/models/requester.js"></script>
+    <script src="js/models/auth.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+<div id="container">
+    <header>
+        <span class="logo">☃</span><span class="header">SeenIt</span>
+        <div id="profile"><span></span>|<a href="#" id="linkLogout">logout</a></div>
+    </header>
+
+
+    <div class="content">
+        <div id="menu">
+            <div class="title">Navigation</div>
+            <a href="#" id="linkCatalog" class="nav">Catalog</a>
+            <a href="#" id="linkSubmit" class="nav">Submit Link</a>
+            <a href="#" id="linkMyPosts" class="nav">My Posts</a>
+        </div>
+
+        <section id="viewWelcome">
+            <div class="welcome">
+                <div class="signup">
+                    <form id="loginForm">
+                        <h2>Sign In</h2>
+                        <label>Username:</label>
+                        <input name="username" type="text" id="loginUsername">
+                        <label>Password:</label>
+                        <input name="password" type="password" id="loginPasswd">
+                        <input id="btnLogin" value="Sign In" type="submit">
+                    </form>
+                    <form id="registerForm">
+                        <h2>Register</h2>
+                        <label>Username:</label>
+                        <input name="username" type="text" id="registerUsername">
+                        <label>Password:</label>
+                        <input name="password" type="password" id="registerPasswd">
+                        <label>Repeat Password:</label>
+                        <input name="repeatPass" type="password" id="registerRepeatedPasswd">
+                        <input id="btnRegister" value="Sign Up" type="submit">
+                    </form>
+                </div>
+
+                <div class="about">
+                    <h1>Welcome to SeenIt</h1>
+                    <p>
+                        Share interesting links and discuss great content. It's what's happening now.
+                    </p>
+                    <p>Sign in or sign up in a second.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="viewCatalog">
+            <div class="posts">
+            </div>
+        </section>
+
+        <section id="viewSubmit">
+            <div class="submitArea">
+                <h1>Submit Link</h1>
+                <p>Please, fill out the form. A thumbnail image is not required.</p>
+            </div>
+            <div class="submitArea formContainer">
+                <form id="submitForm" class="submitForm">
+                    <label>Link URL:</label>
+                    <input name="url" value="" type="text" id="postUrl" required>
+                    <label>Link Title:</label>
+                    <input name="title" value="" type="text" id="postTitle" required>
+                    <label>Link Thumbnail Image (optional):</label>
+                    <input name="image" value="" type="text" id="postImage">
+                    <label>Comment (optional):</label>
+                    <textarea name="comment" id="postComment"></textarea>
+                    <input id="btnSubmitPost" value="Submit" type="submit">
+                </form>
+            </div>
+        </section>
+
+        <section id="viewMyPosts">
+            <div class="post post-content">
+                <h1>Your Posts</h1>
+            </div>
+            <div class="posts">
+            </div>
+        </section>
+
+        <section id="viewEdit">
+            <div class="submitArea">
+                <h1>Edit Link</h1>
+                <p>Please, fill out the form. A thumbnail image/description is not required.</p>
+            </div>
+            <div class="submitArea formContainer">
+                <form id="editPostForm" class="submitForm">
+                    <label>Link URL:</label>
+                    <input name="url" type="text" id="editPostUrl" required>
+                    <label>Link Title:</label>
+                    <input name="title" type="text" id="editPostTitle" required>
+                    <label>Link Thumbnail Image (optional):</label>
+                    <input name="image" type="text" id="editPostImg">
+                    <label>Comment (optional):</label>
+                    <textarea name="description" id="editPostDescription">No desc</textarea>
+                    <input id="btnEditPost" type="submit" value="Edit Post">
+                </form>
+            </div>
+        </section>
+
+        <section id="viewComments">
+            <div class="post" id="singlePostDisplay">
+
+            </div>
+
+            <div class="post post-content">
+                <form id="commentForm">
+                    <label>Comment</label>
+                    <textarea name="content" type="text" id="commentText"></textarea>
+                    <input type="submit" value="Add Comment" id="btnPostComment">
+                </form>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>SeenIt SPA © 2017</footer>
+</div>
+
+<div id="notifications">
+    <div id="loadingBox" class="notification"><span>Loading …</span></div>
+    <div id="infoBox" class="notification"><span>Info</span></div>
+    <div id="errorBox" class="notification"><span>Error</span></div>
+</div>
+
+</body>
+</html>
